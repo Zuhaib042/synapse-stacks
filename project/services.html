@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — SynapseStacks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #F4F0E6;
+    --cream-dark: #EAE5D8;
+    --ink: #1C1914;
+    --ink-mid: #4A4540;
+    --ink-light: #7A7268;
+    --yellow: #F2C84B;
+    --yellow-dark: #D9AE2A;
+    --green: #6EC97A;
+    --pink: #E85C8A;
+    --blue: #5B8EF0;
+    --purple: #9B72CF;
+    --white: #FFFFFF;
+    --card-shadow: 0 2px 24px rgba(28,25,20,0.08);
+    --radius-lg: 24px;
+    --radius-md: 16px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px; height: 68px;
+    background: rgba(244,240,230,0.88);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(28,25,20,0.06);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo-text { font-size: 18px; font-weight: 800; letter-spacing: -0.03em; color: var(--ink); }
+  .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .footer-logo-text { font-size: 16px; font-weight: 800; color: var(--white); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 14px; font-weight: 500; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  .nav-cta { background: var(--ink); color: var(--white) !important; padding: 10px 22px; border-radius: 100px; font-weight: 600 !important; font-size: 14px !important; transition: background 0.2s, transform 0.15s !important; }
+  .nav-cta:hover { background: #333 !important; transform: translateY(-1px); }
+
+  /* HERO */
+  .page-hero {
+    padding: 160px 48px 100px;
+    position: relative; overflow: hidden;
+    background: var(--cream);
+  }
+  .page-hero-inner { max-width: 1160px; margin: 0 auto; }
+  .page-hero-graph { position: absolute; inset: 0; pointer-events: none; }
+
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 16px; }
+  .page-hero h1 { font-size: clamp(48px, 6vw, 84px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.04; max-width: 780px; margin-bottom: 24px; text-wrap: balance; }
+  .page-hero h1 em { font-style: normal; color: var(--yellow-dark); }
+  .page-hero p { font-size: 18px; color: var(--ink-light); max-width: 520px; line-height: 1.65; }
+
+  /* STACK STRIP */
+  .stack-strip {
+    background: var(--cream-dark);
+    padding: 28px 48px;
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    border-top: 1px solid rgba(28,25,20,0.06);
+    border-bottom: 1px solid rgba(28,25,20,0.06);
+  }
+  .stack-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); margin-right: 8px; }
+  .stack-pill { background: var(--white); border-radius: 100px; padding: 6px 14px; font-size: 12px; font-weight: 600; color: var(--ink-mid); border: 1px solid rgba(28,25,20,0.08); }
+
+  /* SERVICES DETAILED */
+  .services-detailed { padding: 100px 48px; }
+  .services-detailed-inner { max-width: 1160px; margin: 0 auto; }
+
+  .service-block {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: center; padding: 80px 0;
+    border-bottom: 1px solid rgba(28,25,20,0.08);
+  }
+  .service-block:first-child { padding-top: 0; }
+  .service-block:last-child { border-bottom: none; }
+  .service-block.reverse { direction: rtl; }
+  .service-block.reverse > * { direction: ltr; }
+
+  .service-block-label {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+  }
+  .service-block-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .service-block-num { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-light); }
+
+  .service-block h2 { font-size: clamp(28px, 3vw, 42px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; margin-bottom: 20px; text-wrap: balance; }
+  .service-block p { font-size: 16px; color: var(--ink-light); line-height: 1.7; margin-bottom: 28px; }
+
+  .capability-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { background: var(--white); border: 1px solid rgba(28,25,20,0.1); border-radius: 100px; padding: 6px 16px; font-size: 12px; font-weight: 600; color: var(--ink-mid); }
+
+  .service-visual {
+    border-radius: var(--radius-lg);
+    min-height: 320px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    font-size: 13px; font-weight: 600; color: rgba(255,255,255,0.4);
+    letter-spacing: 0.04em;
+  }
+
+  .service-visual-inner {
+    position: relative; z-index: 1;
+    text-align: center;
+  }
+
+  .vis-orb { position: absolute; border-radius: 50%; }
+
+  /* CTA */
+  .services-cta { background: var(--ink); text-align: center; padding: 100px 48px; position: relative; overflow: hidden; }
+  .services-cta h2 { font-size: clamp(36px, 4vw, 60px); font-weight: 800; letter-spacing: -0.04em; color: var(--white); max-width: 640px; margin: 0 auto 20px; line-height: 1.08; text-wrap: balance; position: relative; z-index:1; }
+  .services-cta h2 em { font-style: normal; color: var(--yellow); }
+  .services-cta p { font-size: 16px; color: rgba(255,255,255,0.45); max-width: 440px; margin: 0 auto 40px; line-height: 1.6; position: relative; z-index:1; }
+  .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index:1; }
+
+  .services-cta { background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 28px 28px; }
+
+  .btn-yellow { background: var(--yellow); color: var(--ink); padding: 14px 30px; border-radius: 100px; font-size: 14px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: transform 0.15s, background 0.2s; }
+  .btn-yellow:hover { background: var(--yellow-dark); transform: translateY(-2px); }
+  .btn-ghost-light { color: rgba(255,255,255,0.5); padding: 14px 20px; font-size: 14px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: color 0.2s; }
+  .btn-ghost-light:hover { color: rgba(255,255,255,0.85); }
+
+  footer { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.06); padding: 48px; }
+  .footer-inner { max-width: 1160px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
+  /* footer-logo defined above */
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: rgba(255,255,255,0.8); }
+  .footer-copy { font-size: 13px; color: rgba(255,255,255,0.25); width: 100%; text-align: center; margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.06); }
+
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <svg width="32" height="32" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="34" height="34" rx="8" fill="#3B5BDB"/><path d="M17 9l8.5 4.25L17 17.5 8.5 13.25z" fill="white"/><path d="M8.5 17.5l8.5 4.25 8.5-4.25" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M8.5 21.75l8.5 4.25 8.5-4.25" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+    <span class="nav-logo-text">SynapseStacks</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#consultation" class="nav-cta">Schedule a Consultation</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <svg class="page-hero-graph" viewBox="0 0 1440 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#1C1914" stroke-width="1" fill="none" opacity="0.08">
+      <line x1="900" y1="40" x2="1100" y2="120"/><line x1="1100" y1="120" x2="1280" y2="60"/><line x1="1100" y1="120" x2="1060" y2="280"/><line x1="1280" y1="60" x2="1380" y2="200"/><line x1="1380" y1="200" x2="1060" y2="280"/><line x1="900" y1="40" x2="1060" y2="280"/><line x1="1060" y1="280" x2="1200" y2="400"/><line x1="1380" y1="200" x2="1420" y2="380"/>
+    </g>
+    <g fill="#1C1914" opacity="0.15">
+      <circle cx="900" cy="40" r="3"/><circle cx="1100" cy="120" r="3"/><circle cx="1280" cy="60" r="3"/><circle cx="1060" cy="280" r="3"/><circle cx="1380" cy="200" r="3"/><circle cx="1200" cy="400" r="3"/><circle cx="1420" cy="380" r="3"/>
+    </g>
+    <circle cx="1100" cy="120" r="5" fill="#3B5BDB" opacity="0.3"/>
+    <circle cx="1280" cy="60" r="4" fill="#D9AE2A" opacity="0.4"/>
+  </svg>
+  <div class="page-hero-inner">
+    <p class="eyebrow">Our Services</p>
+    <h1>Nine disciplines.<br><em>One partner.</em></h1>
+    <p>From foundational cloud infrastructure to intelligent AI automation — every capability you need to build, scale, and own your digital future.</p>
+  </div>
+</div>
+
+<div class="stack-strip">
+  <span class="stack-label">Technologies</span>
+  <span class="stack-pill">React</span>
+  <span class="stack-pill">Next.js</span>
+  <span class="stack-pill">Vue</span>
+  <span class="stack-pill">React Native</span>
+  <span class="stack-pill">Flutter</span>
+  <span class="stack-pill">Node.js</span>
+  <span class="stack-pill">GraphQL</span>
+  <span class="stack-pill">Kubernetes</span>
+  <span class="stack-pill">Terraform</span>
+  <span class="stack-pill">AWS</span>
+  <span class="stack-pill">GCP</span>
+  <span class="stack-pill">Azure</span>
+  <span class="stack-pill">OpenAI</span>
+  <span class="stack-pill">Shopify Plus</span>
+</div>
+
+<div class="services-detailed">
+  <div class="services-detailed-inner">
+
+    <!-- 01 Web -->
+    <div class="service-block fade-up">
+      <div>
+        <div class="service-block-label">
+          <div class="service-block-dot" style="background:var(--yellow);"></div>
+          <span class="service-block-num">01 — Full-Service Web Development</span>
+        </div>
+        <h2>High-performance web architectures that scale</h2>
+        <p>We build custom web applications using modern frameworks like React, Vue, and Next.js. Our approach prioritises separation of concerns, headless architecture, and performance-first delivery across global CDNs — so your product is fast from day one, and stays fast as you grow.</p>
+        <div class="capability-chips">
+          <span class="chip">React</span><span class="chip">Next.js</span><span class="chip">Vue</span>
+          <span class="chip">Headless CMS</span><span class="chip">CDN Optimisation</span><span class="chip">SSR / SSG</span>
+        </div>
+      </div>
+      <div class="service-visual" style="background: linear-gradient(135deg, #1C1914 60%, #2A2520);">
+        <div class="vis-orb" style="width:120px;height:120px;background:var(--yellow);top:-30px;right:-30px;opacity:0.9;"></div>
+        <div class="vis-orb" style="width:70px;height:70px;background:var(--green);bottom:20px;left:20px;opacity:0.6;"></div>
+        <div class="service-visual-inner">
+          <div style="font-size:48px;margin-bottom:12px;">⚡</div>
+          <div>Web Architecture</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 02 Mobile -->
+    <div class="service-block reverse fade-up">
+      <div>
+        <div class="service-block-label">
+          <div class="service-block-dot" style="background:var(--blue);"></div>
+          <span class="service-block-num">02 — Mobile & Cross-Platform Engineering</span>
+        </div>
+        <h2>Native-feeling apps across every platform</h2>
+        <p>We deliver native iOS and Android experiences alongside efficient cross-platform solutions using React Native and Flutter. Fluid animations, offline capabilities, and deep OS integrations — built to feel like the apps your users already trust.</p>
+        <div class="capability-chips">
+          <span class="chip">React Native</span><span class="chip">Flutter</span><span class="chip">iOS</span>
+          <span class="chip">Android</span><span class="chip">Offline Mode</span><span class="chip">Deep OS Integration</span>
+        </div>
+      </div>
+      <div class="service-visual" style="background: linear-gradient(135deg, #1a2a4a 60%, #0d1a30);">
+        <div class="vis-orb" style="width:100px;height:100px;background:var(--blue);top:-20px;left:-20px;opacity:0.8;"></div>
+        <div class="vis-orb" style="width:60px;height:60px;background:var(--purple);bottom:30px;right:30px;opacity:0.6;"></div>
+        <div class="service-visual-inner">
+          <div style="font-size:48px;margin-bottom:12px;">📱</div>
+          <div>Mobile Engineering</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 03 SaaS -->
+    <div class="service-block fade-up">
+      <div>
+        <div class="service-block-label">
+          <div class="service-block-dot" style="background:var(--green);"></div>
+          <span class="service-block-num">03 — Scalable SaaS Architecture</span>
+        </div>
+        <h2>Multi-tenant infrastructure built for exponential growth</h2>
+        <p>We design SaaS systems from database schema to subscription billing — with secure customer data isolation, efficient shared compute, and the architectural foundations to handle user growth that compounds fast.</p>
+        <div class="capability-chips">
+          <span class="chip">Multi-tenancy</span><span class="chip">Data Isolation</span><span class="chip">Stripe / Billing</span>
+          <span class="chip">Postgres</span><span class="chip">Elastic Scaling</span><span class="chip">Role-based Access</span>
+        </div>
+      </div>
+      <div class="service-visual" style="background: linear-gradient(135deg, #1a2e1a 60%, #0d1f0d);">
+        <div class="vis-orb" style="width:110px;height:110px;background:var(--green);top:-20px;right:-20px;opacity:0.8;"></div>
+        <div class="vis-orb" style="width:50px;height:50px;background:var(--yellow);bottom:40px;left:40px;opacity:0.6;"></div>
+        <div class="service-visual-inner">
+          <div style="font-size:48px;margin-bottom:12px;">🏗</div>
+          <div>SaaS Architecture</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 04 AI -->
+    <div class="service-block reverse fade-up">
+      <div>
+        <div class="service-block-label">
+          <div class="service-block-dot" style="background:var(--pink);"></div>
+          <span class="service-block-num">04 — AI & Intelligent Automation</span>
+        </div>
+        <h2>Machine intelligence woven into your workflows</h2>
+        <p>We integrate LLMs, computer vision, and predictive models into your existing systems — automating repetitive cognitive tasks, extracting insights from data, and enabling your team to operate at a scale that wasn't previously possible.</p>
+        <div class="capability-chips">
+          <span class="chip">LLM Integration</span><span class="chip">OpenAI / Anthropic</span><span class="chip">Computer Vision</span>
+          <span class="chip">Fine-tuning</span><span class="chip">Predictive Models</span><span class="chip">Workflow Automation</span>
+        </div>
+      </div>
+      <div class="service-visual" style="background: linear-gradient(135deg, #2a1a22 60%, #1a0d16);">
+        <div class="vis-orb" style="width:120px;height:120px;background:var(--pink);top:-30px;right:-20px;opacity:0.75;"></div>
+        <div class="vis-orb" style="width:55px;height:55px;background:var(--purple);bottom:30px;left:30px;opacity:0.6;"></div>
+        <div class="service-visual-inner">
+          <div style="font-size:48px;margin-bottom:12px;">🤖</div>
+          <div>AI Automation</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 Legacy -->
+    <div class="service-block fade-up">
+      <div>
+        <div class="service-block-label">
+          <div class="service-block-dot" style="background:var(--purple);"></div>
+          <span class="service-block-num">05 — Legacy Application Modernization</span>
+        </div>
+        <h2>From monolith to microservices — without disruption</h2>
+        <p>We apply strangler fig migration patterns to systematically decouple and containerise your legacy systems — modernising your architecture without halting your live business operations. No big-bang rewrites.</p>
+        <div class="capability-chips">
+          <span class="chip">Strangler Fig</span><span class="chip">Microservices</span><span class="chip">Docker</span>
+          <span class="chip">Event-Driven</span><span class="chip">Zero Downtime</span><span class="chip">Incremental Migration</span>
+        </div>
+      </div>
+      <div class="service-visual" style="background: linear-gradient(135deg, #1e1a2a 60%, #130d1f);">
+        <div class="vis-orb" style="width:100px;height:100px;background:var(--purple);top:-20px;right:-10px;opacity:0.8;"></div>
+        <div class="vis-orb" style="width:60px;height:60px;background:var(--blue);bottom:30px;left:30px;opacity:0.55;"></div>
+        <div class="service-visual-inner">
+          <div style="font-size:48px;margin-bottom:12px;">🔄</div>
+          <div>Legacy Modernization</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 06 Ecommerce -->
+    <div class="service-block reverse fade-up">
+      <div>
+        <div class="service-block-label">
+          <div class="service-block-dot" style="background:var(--yellow);"></div>
+          <span class="service-block-num">06 — E-Commerce & Shopify Solutions</span>
+        </div>
+        <h2>High-conversion commerce, engineered end-to-end</h2>
+        <p>We build Shopify Plus and headless commerce storefronts integrated with complex ERP and fulfillment systems. Sub-second load times, custom checkout flows, and inventory logic built for serious commercial volume.</p>
+        <div class="capability-chips">
+          <span class="chip">Shopify Plus</span><span class="chip">Headless Commerce</span><span class="chip">ERP Integration</span>
+          <span class="chip">Custom Checkout</span><span class="chip">Inventory APIs</span><span class="chip">Conversion Optimisation</span>
+        </div>
+      </div>
+      <div class="service-visual" style="background: linear-gradient(135deg, #2a2210 60%, #1f1a0a);">
+        <div class="vis-orb" style="width:130px;height:130px;background:var(--yellow);top:-30px;left:-20px;opacity:0.85;"></div>
+        <div class="vis-orb" style="width:55px;height:55px;background:var(--green);bottom:30px;right:30px;opacity:0.6;"></div>
+        <div class="service-visual-inner">
+          <div style="font-size:48px;margin-bottom:12px;">🛒</div>
+          <div>E-Commerce Solutions</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 07 Cloud -->
+    <div class="service-block fade-up">
+      <div>
+        <div class="service-block-label">
+          <div class="service-block-dot" style="background:var(--blue);"></div>
+          <span class="service-block-num">07 — Cloud Infrastructure & DevOps</span>
+        </div>
+        <h2>Resilient infrastructure across every major cloud</h2>
+        <p>Infrastructure as Code with Terraform, Kubernetes orchestration, and automated CI/CD pipelines — with fault tolerance, high availability, and cloud security baked in. We support AWS, GCP, and Azure.</p>
+        <div class="capability-chips">
+          <span class="chip">Terraform</span><span class="chip">Kubernetes</span><span class="chip">CI/CD</span>
+          <span class="chip">AWS</span><span class="chip">GCP</span><span class="chip">Azure</span><span class="chip">High Availability</span>
+        </div>
+      </div>
+      <div class="service-visual" style="background: linear-gradient(135deg, #101a2a 60%, #0a1020);">
+        <div class="vis-orb" style="width:110px;height:110px;background:var(--blue);top:-20px;right:-20px;opacity:0.85;"></div>
+        <div class="vis-orb" style="width:65px;height:65px;background:var(--green);bottom:30px;left:20px;opacity:0.55;"></div>
+        <div class="service-visual-inner">
+          <div style="font-size:48px;margin-bottom:12px;">☁️</div>
+          <div>Cloud & DevOps</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 08 UX -->
+    <div class="service-block reverse fade-up">
+      <div>
+        <div class="service-block-label">
+          <div class="service-block-dot" style="background:var(--green);"></div>
+          <span class="service-block-num">08 — UI/UX Design & Prototyping</span>
+        </div>
+        <h2>Interfaces engineered for real human behaviour</h2>
+        <p>We create design systems, wireframes, and interactive prototypes rooted in user psychology and interaction logic. Accessible, premium aesthetics — and complex user journey mapping that accounts for how people actually behave.</p>
+        <div class="capability-chips">
+          <span class="chip">Design Systems</span><span class="chip">Figma</span><span class="chip">Prototyping</span>
+          <span class="chip">User Research</span><span class="chip">Accessibility</span><span class="chip">Journey Mapping</span>
+        </div>
+      </div>
+      <div class="service-visual" style="background: linear-gradient(135deg, #1a2a1a 60%, #0d200d);">
+        <div class="vis-orb" style="width:100px;height:100px;background:var(--green);top:-15px;left:-15px;opacity:0.8;"></div>
+        <div class="vis-orb" style="width:60px;height:60px;background:var(--pink);bottom:30px;right:30px;opacity:0.6;"></div>
+        <div class="service-visual-inner">
+          <div style="font-size:48px;margin-bottom:12px;">🎨</div>
+          <div>UI/UX Design</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 09 API -->
+    <div class="service-block fade-up">
+      <div>
+        <div class="service-block-label">
+          <div class="service-block-dot" style="background:var(--pink);"></div>
+          <span class="service-block-num">09 — API Development & Systems Integration</span>
+        </div>
+        <h2>Connecting your software ecosystem, end to end</h2>
+        <p>We design RESTful and GraphQL APIs and connect fragmented business software — CRM, ERP, third-party SaaS — into unified data pipelines. Secure integration architecture that gives every system in your stack a clear reason to exist.</p>
+        <div class="capability-chips">
+          <span class="chip">REST APIs</span><span class="chip">GraphQL</span><span class="chip">CRM Integration</span>
+          <span class="chip">ERP Integration</span><span class="chip">Webhooks</span><span class="chip">Data Pipelines</span>
+        </div>
+      </div>
+      <div class="service-visual" style="background: linear-gradient(135deg, #2a101a 60%, #1f0a12);">
+        <div class="vis-orb" style="width:110px;height:110px;background:var(--pink);top:-20px;right:-20px;opacity:0.8;"></div>
+        <div class="vis-orb" style="width:55px;height:55px;background:var(--yellow);bottom:30px;left:30px;opacity:0.6;"></div>
+        <div class="service-visual-inner">
+          <div style="font-size:48px;margin-bottom:12px;">🔗</div>
+          <div>API & Integrations</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="services-cta">
+  <h2>Ready to scope your <em>next project?</em></h2>
+  <p>Tell us what you're building. We'll tell you exactly how we'd approach it.</p>
+  <div class="cta-actions">
+    <a href="index.html#consultation" class="btn-yellow">Schedule a Free Consultation</a>
+    <a href="about.html" class="btn-ghost-light">Learn how we work →</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="footer-logo">
+      <svg width="26" height="26" viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="8" fill="#3B5BDB"/><path d="M17 9l8.5 4.25L17 17.5 8.5 13.25z" fill="white"/><path d="M8.5 17.5l8.5 4.25 8.5-4.25" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M8.5 21.75l8.5 4.25 8.5-4.25" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      <span class="footer-logo-text">SynapseStacks</span>
+    </a>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Terms</a></li>
+      <li><a href="#">Twitter</a></li>
+      <li><a href="#">GitHub</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 SynapseStacks. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
