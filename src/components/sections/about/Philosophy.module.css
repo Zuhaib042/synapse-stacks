@@ -1,0 +1,97 @@
+.section {
+  padding: var(--section-padding);
+  background: var(--cream-dark);
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-bottom: 80px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-light);
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: clamp(36px, 4vw, 58px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.title em {
+  font-style: normal;
+  color: var(--yellow-dark);
+}
+
+.body {
+  font-size: 17px;
+  color: var(--ink-light);
+  line-height: 1.75;
+  padding-top: 4px;
+}
+
+.body p + p {
+  margin-top: 20px;
+}
+
+/* Quote card */
+.quote {
+  background: var(--ink);
+  border-radius: var(--radius-lg);
+  padding: 56px 52px;
+  position: relative;
+  overflow: hidden;
+}
+
+.quoteMark {
+  font-size: 80px;
+  font-weight: 800;
+  color: var(--yellow);
+  line-height: 0.7;
+  margin-bottom: 24px;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.quoteText {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.45;
+  color: var(--white);
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .header {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+
+  .quoteText {
+    font-size: 18px;
+  }
+
+  .quote {
+    padding: 40px 32px;
+  }
+}

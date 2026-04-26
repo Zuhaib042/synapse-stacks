@@ -1,0 +1,14 @@
+.servicesList {
+  padding: 100px 48px;
+}
+
+.servicesListInner {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .servicesList {
+    padding: 64px 20px;
+  }
+}
