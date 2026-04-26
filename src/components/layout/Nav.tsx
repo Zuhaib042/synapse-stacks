@@ -26,12 +26,7 @@ export function Nav() {
           <li key={link.href}>
             <Link
               href={link.href}
-              className={[
-                styles.link,
-                pathname === link.href ? styles.active : '',
-              ]
-                .filter(Boolean)
-                .join(' ')}
+              className={`${styles.link}${pathname === link.href ? ` ${styles.active}` : ''}`}
             >
               {link.label}
             </Link>
@@ -64,12 +59,7 @@ export function Nav() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={[
-                    styles.mobileLink,
-                    pathname === link.href ? styles.mobileLinkActive : '',
-                  ]
-                    .filter(Boolean)
-                    .join(' ')}
+                  className={`${styles.mobileLink}${pathname === link.href ? ` ${styles.mobileLinkActive}` : ''}`}
                   onClick={() => setMenuOpen(false)}
                 >
                   {link.label}

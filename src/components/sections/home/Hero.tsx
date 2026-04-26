@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/Button'
 import { NodeGraph } from '@/components/ui/NodeGraph'
 import styles from './Hero.module.css'
+import { TechTicker } from '@/components/ui/TechTicker'
 
 export function Hero() {
   return (
@@ -22,6 +23,7 @@ export function Hero() {
         AI&nbsp;automation to scalable cloud architecture.
       </p>
 
+      <TechTicker />
       <div className={styles.actions}>
         <Button href="/#consultation" variant="yellow">
           Schedule a Free Consultation
@@ -30,6 +32,7 @@ export function Hero() {
           View Our Services →
         </Button>
       </div>
+      
     </section>
   )
 }

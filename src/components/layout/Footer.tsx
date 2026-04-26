@@ -3,9 +3,6 @@ import { LogoIcon } from '@/components/ui/Logo'
 import styles from './Footer.module.css'
 
 const footerLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/services', label: 'Services' },
-  { href: '/about', label: 'About' },
   { href: '/privacy', label: 'Privacy' },
   { href: '/terms', label: 'Terms' },
 ]

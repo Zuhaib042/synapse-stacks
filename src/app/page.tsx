@@ -4,7 +4,7 @@ import { Metrics } from '@/components/sections/home/Metrics'
 import { ServicesGrid } from '@/components/sections/home/ServicesGrid'
 import { Advantage } from '@/components/sections/home/Advantage'
 import { Process } from '@/components/sections/home/Process'
-import { FinalCta } from '@/components/sections/home/FinalCta'
+import { ContactSection } from '@/components/sections/home/ContactSection'
 import { TechTicker } from '@/components/ui/TechTicker'
 import {
   buildPageMeta,
@@ -65,8 +65,7 @@ export default function HomePage() {
       <ServicesGrid />
       <Advantage />
       <Process />
-      <FinalCta />
-      <TechTicker />
+      <ContactSection />
     </>
   )
 }

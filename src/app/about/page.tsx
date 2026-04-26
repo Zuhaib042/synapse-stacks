@@ -44,7 +44,6 @@ export default function AboutPage() {
       <Approach />
       <Partnership />
       <AboutCta />
-      <TechTicker />
     </>
   )
 }

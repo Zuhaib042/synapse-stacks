@@ -77,7 +77,6 @@ export default function ServicesPage() {
       </div>
 
       <ServicesCta />
-      <TechTicker />
     </>
   )
 }

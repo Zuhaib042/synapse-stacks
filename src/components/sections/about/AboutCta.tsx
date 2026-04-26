@@ -12,7 +12,7 @@ export function AboutCta() {
         objectives — starting this week.
       </p>
       <div className={styles.actions}>
-        <Button href="mailto:hello@synapsestacks.com" variant="yellow" external>
+        <Button href="/#consultation" variant="yellow">
           Schedule a Free Consultation
         </Button>
         <Button href="/services" variant="ghostLight">

@@ -11,7 +11,7 @@ export function ServicesCta() {
         Tell us what you&apos;re building. We&apos;ll tell you exactly how we&apos;d approach it.
       </p>
       <div className={styles.actions}>
-        <Button href="mailto:hello@synapsestacks.com" variant="yellow" external>
+        <Button href="/#consultation" variant="yellow">
           Schedule a Free Consultation
         </Button>
         <Button href="/about" variant="ghostLight">
