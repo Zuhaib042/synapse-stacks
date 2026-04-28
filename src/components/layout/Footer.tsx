@@ -8,8 +8,7 @@ const footerLinks = [
 ]
 
 const socialLinks = [
-  { href: 'https://twitter.com/synapsestacks', label: 'Twitter', external: true },
-  { href: 'https://github.com/synapsestacks', label: 'GitHub', external: true },
+  { href: 'https://www.linkedin.com/company/synapse-stacks', label: 'LinkedIn', external: true },
 ]
 
 export function Footer() {
