@@ -18,7 +18,7 @@ export const metadata: Metadata = buildPageMeta({
   openGraph: {
     title: 'About SynapseStacks — We build systems that outlast the hype',
     description:
-      'Premium engineering agency with a philosophy built on radical simplicity, engineering rigor, and transparent partnership. Not a feature factory — an engineering partner.',
+      'Premium engineering agency with a philosophy built on radical simplicity, engineering rigor, and transparent partnership. Not a feature factory. An engineering partner.',
     url: `${SITE_URL_CONST}/about`,
   },
 })

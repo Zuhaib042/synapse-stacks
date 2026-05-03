@@ -48,12 +48,12 @@ export const advantagePillars = [
   },
   {
     title: 'Intelligent by Design',
-    desc: 'Automation and machine learning are woven directly into your applications — reducing operational overhead and enabling data-driven decision making across every layer.',
+    desc: 'Automation and machine learning are woven directly into your applications, reducing operational overhead and enabling data-driven decision making across every layer.',
     accentColor: colors.blue,
   },
   {
     title: 'Relentless Execution',
-    desc: 'We operate with the agility of a startup and the rigor of an enterprise — transparent communication, rapid iteration, and uncompromising quality assurance on every commit.',
+    desc: 'We operate with the agility of a startup and the rigor of an enterprise: transparent communication, rapid iteration, and uncompromising quality assurance on every commit.',
     accentColor: colors.pink,
   },
 ]

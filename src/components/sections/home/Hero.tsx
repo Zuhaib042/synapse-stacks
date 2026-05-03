@@ -1,38 +1,96 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
+import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
-import { NodeGraph } from '@/components/ui/NodeGraph'
 import styles from './Hero.module.css'
-import { TechTicker } from '@/components/ui/TechTicker'
 
 export function Hero() {
+  const glowRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const t = setTimeout(() => {
+      if (glowRef.current) glowRef.current.classList.add(styles.glowVisible)
+    }, 400)
+    return () => clearTimeout(t)
+  }, [])
+
   return (
     <section className={styles.hero} aria-labelledby="hero-headline">
-      {/* Technical node-graph background — replaces colorful circles */}
-      <NodeGraph className={styles.graph} />
+      <div ref={glowRef} className={styles.glow} aria-hidden="true" />
 
-      <div className={styles.eyebrow}>
-        <div className={styles.eyebrowDot} aria-hidden="true" />
-        <span>The Future of Digital Infrastructure</span>
+      <div className={styles.top}>
+        <h1 id="hero-headline" className={styles.headline}>
+          Engineering <em>tomorrow&apos;s</em><br />infrastructure
+        </h1>
+        <div className={styles.right}>
+          <p className={styles.sub}>
+            We build high-performance digital ecosystems for visionary companies from intelligent
+            AI&nbsp;automation to scalable cloud architecture.
+          </p>
+          <div className={styles.actions}>
+            <Button href="/#consultation" variant="yellow">
+              Schedule a Free Consultation
+            </Button>
+            <Button href="/services" variant="ghost">
+              View Services →
+            </Button>
+          </div>
+        </div>
       </div>
 
-      <h1 id="hero-headline" className={styles.headline}>
-        Engineering <em>Tomorrow&apos;s</em> Infrastructure
-      </h1>
-
-      <p className={styles.sub}>
-        We build high-performance digital ecosystems for visionary companies. From intelligent
-        AI&nbsp;automation to scalable cloud architecture.
-      </p>
-
-      <TechTicker />
-      <div className={styles.actions}>
-        <Button href="/#consultation" variant="yellow">
-          Schedule a Free Consultation
-        </Button>
-        <Button href="/services" variant="ghost">
-          View Our Services →
-        </Button>
+      {/* Dashboard mockup */}
+      <div className={styles.mockup} aria-hidden="true">
+        <div className={styles.mockupTopbar}>
+          <div className={`${styles.dot} ${styles.dotRed}`} />
+          <div className={`${styles.dot} ${styles.dotYellow}`} />
+          <div className={`${styles.dot} ${styles.dotGreen}`} />
+          <span className={styles.mockupTab}>SynapseStacks Dashboard</span>
+        </div>
+        <div className={styles.mockupBody}>
+          <div className={styles.mockupSidebar}>
+            {['Overview', 'Infrastructure', 'Deployments', 'AI Pipelines', 'Services', 'Analytics'].map(
+              (item, i) => (
+                <div key={item} className={`${styles.sidebarItem} ${i === 1 ? styles.active : ''}`}>
+                  <div
+                    className={styles.sidebarDot}
+                    style={{ background: i === 1 ? 'var(--accent)' : '#444' }}
+                  />
+                  {item}
+                </div>
+              )
+            )}
+          </div>
+          <div className={styles.mockupMain}>
+            <div className={styles.mockupTitle}>Cloud Infrastructure Health</div>
+            <div className={styles.mockupId}>#PROD-2026 · AWS us-east-1</div>
+            <div className={styles.mockupDesc}>
+              All systems nominal. Latest deployment completed in 2m 14s with zero downtime.
+              Auto-scaling triggered at 78% load 3 new nodes provisioned.
+            </div>
+            <div className={styles.mockupTags}>
+              <span className={`${styles.mockupTag} ${styles.mockupTagGreen}`}>● Operational</span>
+              <span className={`${styles.mockupTag} ${styles.mockupTagPurple}`}>Kubernetes</span>
+              <span className={styles.mockupTag}>Terraform</span>
+              <span className={styles.mockupTag}>AWS</span>
+            </div>
+          </div>
+        </div>
+        <div className={styles.mockupStats}>
+          <div className={styles.mockupStat}>
+            <div className={`${styles.statVal} ${styles.statValNeon}`}>99.9%</div>
+            <div className={styles.statLabel}>Uptime SLA</div>
+          </div>
+          <div className={styles.mockupStat}>
+            <div className={`${styles.statVal} ${styles.statValAccent}`}>50+</div>
+            <div className={styles.statLabel}>Projects Live</div>
+          </div>
+          <div className={styles.mockupStat}>
+            <div className={styles.statVal}>~0ms</div>
+            <div className={styles.statLabel}>Tech Debt</div>
+          </div>
+        </div>
       </div>
-      
     </section>
   )
 }

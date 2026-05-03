@@ -1,30 +1,40 @@
+import { FadeUp } from '@/components/ui/FadeUp'
 import { processSteps } from '@/lib/data/metrics'
 import styles from './Process.module.css'
+
+const stepTitles: Record<string, { before: string; em: string }> = {
+  'Discover & Architect': { before: 'Discover & ', em: 'Architect' },
+  'Design & Prototype':   { before: 'Design & ', em: 'Prototype' },
+  'Build & Iterate':      { before: 'Build & ', em: 'Iterate' },
+  'Deploy & Scale':       { before: 'Deploy & ', em: 'Scale' },
+}
 
 export function Process() {
   return (
     <section className={styles.section} aria-labelledby="process-title">
       <div className={styles.inner}>
-        <p className={styles.eyebrow}>How We Work</p>
-        <h2 id="process-title" className={styles.title}>
-          Startup agility.
-          <br />
-          Enterprise rigor.
-        </h2>
+        <FadeUp className={styles.header}>
+          <p className={styles.eyebrow}>// How we work</p>
+          <h2 id="process-title" className={styles.title}>
+            Startup agility.<br /><em>Enterprise rigor.</em>
+          </h2>
+        </FadeUp>
 
-        <div className={styles.grid}>
-          {processSteps.map((step) => (
-            <div key={step.num} className={styles.step}>
-              <div
-                className={styles.stepBar}
-                style={{ background: step.accentColor }}
-                aria-hidden="true"
-              />
-              <div className={styles.stepNum}>{step.num}</div>
-              <h3 className={styles.stepTitle}>{step.title}</h3>
-              <p className={styles.stepDesc}>{step.desc}</p>
-            </div>
-          ))}
+        <div className={styles.steps}>
+          {processSteps.map((step, i) => {
+            const parsed = stepTitles[step.title]
+            return (
+              <FadeUp key={step.num} className={styles.step} delay={i * 60}>
+                <div className={styles.stepNum}>{step.num}</div>
+                <h3 className={styles.stepTitle}>
+                  {parsed ? (
+                    <>{parsed.before}<em>{parsed.em}</em></>
+                  ) : step.title}
+                </h3>
+                <p className={styles.stepDesc}>{step.desc}</p>
+              </FadeUp>
+            )
+          })}
         </div>
       </div>
     </section>

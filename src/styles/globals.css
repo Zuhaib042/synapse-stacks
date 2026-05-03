@@ -1,49 +1,55 @@
 /* =========================================================
-   SynapseStacks — Global Styles
-   CSS custom properties mirror tokens.ts values.
-   Import this in layout.tsx to make vars available globally.
+   SynapseStacks — Global Styles (v2 Dark Theme)
    ========================================================= */
 
-/* ── Design Tokens as CSS Variables ── */
 :root {
-  /* Backgrounds */
-  --cream: #F4F0E6;
-  --cream-dark: #EAE5D8;
+  /* Dark theme */
+  --bg: #050614;
+  --bg2: #0d0e1a;
+  --surface: #1e202d;
+  --border: rgba(255, 255, 255, 0.07);
+  --border-mid: rgba(255, 255, 255, 0.12);
+  --text: #fbf9ff;
+  --text-mid: rgba(251, 249, 255, 0.55);
+  --text-dim: rgba(251, 249, 255, 0.28);
+  --purple: #7f04f9;
+  --purple-light: #d0b3ef;
+  --muted: #beb0ce;
+  --neon: #6dff03;
+  --accent: #7f04f9;
 
-  /* Text */
-  --ink: #1C1914;
-  --ink-mid: #4A4540;
-  --ink-light: #7A7268;
+  /* Legacy tokens kept for data files */
+  --cream: #050614;
+  --cream-dark: #0d0e1a;
+  --ink: #fbf9ff;
+  --ink-mid: rgba(251, 249, 255, 0.55);
+  --ink-light: rgba(251, 249, 255, 0.28);
+  --yellow: #6dff03;
+  --yellow-dark: #d0b3ef;
+  --green: #6dff03;
+  --pink: #d0b3ef;
+  --blue: #7f04f9;
+  --blue-light: #a855f7;
+  --white: #fbf9ff;
 
-  /* Accent palette */
-  --yellow: #F2C84B;
-  --yellow-dark: #D9AE2A;
-  --green: #6EC97A;
-  --pink: #E85C8A;
-  --blue: #3B5BDB;
-  --blue-light: #5B8EF0;
-  --purple: #9B72CF;
-
-  /* Base */
-  --white: #FFFFFF;
-
-  /* Composite tokens */
-  --card-shadow: 0 2px 24px rgba(28, 25, 20, 0.08);
-  --card-shadow-hover: 0 8px 40px rgba(28, 25, 20, 0.12);
+  /* Shadows */
+  --card-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
+  --card-shadow-hover: 0 8px 40px rgba(127, 4, 249, 0.15);
 
   /* Radii */
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
   --radius-full: 100px;
 
-  /* Typography — uses Next.js font variables from layout.tsx */
+  /* Typography */
   --font-sans: var(--font-plus-jakarta, 'Plus Jakarta Sans', sans-serif);
+  --font-serif: var(--font-dm-serif, 'DM Serif Display', serif);
   --font-mono: var(--font-jetbrains-mono, 'JetBrains Mono', monospace);
 
   /* Layout */
   --max-width: 1160px;
-  --nav-height: 68px;
+  --nav-height: 60px;
   --section-padding: 100px 48px;
   --page-padding: 0 48px;
 }
@@ -64,8 +70,8 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background: var(--cream);
-  color: var(--ink);
+  background: var(--bg);
+  color: var(--text);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -95,64 +101,38 @@ button {
   font: inherit;
 }
 
-/* ── Fade-up animation utility ── */
+/* ── Scroll animations ── */
 .fade-up {
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+.fade-left {
+  opacity: 0;
+  transform: translateX(-20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
+.fade-left.visible { opacity: 1; transform: translateX(0); }
 
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
+.fade-right {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
+.fade-right.visible { opacity: 1; transform: translateX(0); }
 
-/* ── Shared section utilities ── */
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+.fade-in.visible { opacity: 1; }
+
+/* ── Shared layout utilities ── */
 .section-inner {
   max-width: var(--max-width);
   margin: 0 auto;
-}
-
-.section-eyebrow {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-  margin-bottom: 16px;
-}
-
-.section-title {
-  font-size: clamp(36px, 4vw, 58px);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.08;
-  color: var(--ink);
-  text-wrap: balance;
-}
-
-.section-title em {
-  font-style: normal;
-  color: var(--yellow-dark);
-}
-
-.section-sub {
-  font-size: 17px;
-  color: var(--ink-light);
-  line-height: 1.65;
-  max-width: 560px;
-  margin-top: 16px;
-}
-
-/* ── Capability chip ── */
-.chip {
-  background: var(--white);
-  border: 1px solid rgba(28, 25, 20, 0.1);
-  border-radius: var(--radius-full);
-  padding: 6px 16px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--ink-mid);
 }
 
 /* ── Responsive breakpoints ── */
@@ -167,6 +147,6 @@ button {
   :root {
     --section-padding: 64px 20px;
     --page-padding: 0 20px;
-    --nav-height: 60px;
+    --nav-height: 56px;
   }
 }

@@ -1,5 +1,6 @@
 .servicesList {
-  padding: 100px 48px;
+  padding: 80px 48px;
+  border-top: 1px solid var(--border);
 }
 
 .servicesListInner {
@@ -9,6 +10,6 @@
 
 @media (max-width: 768px) {
   .servicesList {
-    padding: 64px 20px;
+    padding: 48px 20px;
   }
 }

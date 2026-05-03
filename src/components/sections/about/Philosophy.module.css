@@ -1,97 +1,85 @@
 .section {
   padding: var(--section-padding);
-  background: var(--cream-dark);
+  border-top: 1px solid var(--border);
 }
 
 .inner {
   max-width: var(--max-width);
   margin: 0 auto;
-}
-
-.header {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   align-items: start;
-  margin-bottom: 80px;
 }
+
+.left {}
 
 .eyebrow {
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-light);
-  margin-bottom: 16px;
+  margin-bottom: 24px;
 }
 
 .title {
-  font-size: clamp(36px, 4vw, 58px);
-  font-weight: 800;
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 400;
   letter-spacing: -0.03em;
-  line-height: 1.08;
+  line-height: 1.1;
   text-wrap: balance;
-  color: var(--ink);
+  color: var(--text);
 }
 
 .title em {
-  font-style: normal;
-  color: var(--yellow-dark);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.right {
+  padding-top: 56px;
 }
 
 .body {
-  font-size: 17px;
-  color: var(--ink-light);
+  font-size: 16px;
+  color: var(--text-mid);
   line-height: 1.75;
-  padding-top: 4px;
 }
 
-.body p + p {
-  margin-top: 20px;
-}
+.body p + p { margin-top: 16px; }
 
-/* Quote card */
+/* Quote card spans full width */
 .quote {
-  background: var(--ink);
-  border-radius: var(--radius-lg);
-  padding: 56px 52px;
+  border: 1px solid var(--border-mid);
+  border-radius: 12px;
+  padding: 56px 72px;
+  text-align: center;
   position: relative;
-  overflow: hidden;
-}
-
-.quoteMark {
-  font-size: 80px;
-  font-weight: 800;
-  color: var(--yellow);
-  line-height: 0.7;
-  margin-bottom: 24px;
-  display: block;
-  position: relative;
-  z-index: 1;
+  background: linear-gradient(135deg, rgba(127, 4, 249, 0.08) 0%, transparent 50%);
+  margin-top: 80px;
+  grid-column: 1 / -1;
 }
 
 .quoteText {
-  font-size: 22px;
-  font-weight: 600;
+  font-size: clamp(17px, 2vw, 22px);
+  font-weight: 400;
   letter-spacing: -0.02em;
-  line-height: 1.45;
-  color: var(--white);
-  position: relative;
-  z-index: 1;
+  line-height: 1.55;
+  color: var(--text);
+  max-width: 600px;
+  margin: 0 auto;
+  text-wrap: balance;
+}
+
+.quoteText em {
+  font-family: var(--font-serif);
+  font-style: italic;
 }
 
 @media (max-width: 900px) {
-  .header {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    margin-bottom: 48px;
-  }
-
-  .quoteText {
-    font-size: 18px;
-  }
-
-  .quote {
-    padding: 40px 32px;
-  }
+  .inner { grid-template-columns: 1fr; gap: 40px; }
+  .right { padding-top: 0; }
+  .quote { padding: 40px 28px; grid-column: 1; }
 }

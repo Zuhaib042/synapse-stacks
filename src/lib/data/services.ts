@@ -25,7 +25,7 @@ export const services: Service[] = [
     shortDesc:
       'End-to-end web architectures built for performance, scale, and seamless user experiences using React, Vue, and Next.js.',
     longDesc:
-      'We build custom web applications using modern frameworks like React, Vue, and Next.js. Our approach prioritises separation of concerns, headless architecture, and performance-first delivery across global CDNs — so your product is fast from day one, and stays fast as you grow.',
+      'We build custom web applications using modern frameworks like React, Vue, and Next.js. Our approach prioritises separation of concerns, headless architecture, and performance-first delivery across global CDNs, so your product is fast from day one and stays fast as you grow.',
     chips: ['React', 'Next.js', 'Vue', 'Headless CMS', 'CDN Optimisation', 'SSR / SSG'],
     tag: 'Frontend · Headless · CDN',
     accentColor: colors.yellow,
@@ -42,7 +42,7 @@ export const services: Service[] = [
     shortDesc:
       'Native-feeling applications deployed across platforms from a single, robust codebase with deep OS integrations.',
     longDesc:
-      'We deliver native iOS and Android experiences alongside efficient cross-platform solutions using React Native and Flutter. Fluid animations, offline capabilities, and deep OS integrations — built to feel like the apps your users already trust.',
+      'We deliver native iOS and Android experiences alongside efficient cross-platform solutions using React Native and Flutter. Fluid animations, offline capabilities, and deep OS integrations built to feel like the apps your users already trust.',
     chips: ['React Native', 'Flutter', 'iOS', 'Android', 'Offline Mode', 'Deep OS Integration'],
     tag: 'React Native · Flutter · iOS · Android',
     accentColor: colors.blue,
@@ -59,7 +59,7 @@ export const services: Service[] = [
     shortDesc:
       'Multi-tenant infrastructure with secure data isolation and exponential user growth built in from day one.',
     longDesc:
-      'We design SaaS systems from database schema to subscription billing — with secure customer data isolation, efficient shared compute, and the architectural foundations to handle user growth that compounds fast.',
+      'We design SaaS systems from database schema to subscription billing, with secure customer data isolation, efficient shared compute, and the architectural foundations to handle user growth that compounds fast.',
     chips: ['Multi-tenancy', 'Data Isolation', 'Stripe / Billing', 'Postgres', 'Elastic Scaling', 'Role-based Access'],
     tag: 'Multi-tenant · Billing · Scale',
     accentColor: colors.green,
@@ -76,7 +76,7 @@ export const services: Service[] = [
     shortDesc:
       'Embedding LLMs, computer vision, and predictive models into your workflows to automate repetitive cognitive tasks at scale.',
     longDesc:
-      "We integrate LLMs, computer vision, and predictive models into your existing systems — automating repetitive cognitive tasks, extracting insights from data, and enabling your team to operate at a scale that wasn't previously possible.",
+      "We integrate LLMs, computer vision, and predictive models into your existing systems to automate repetitive cognitive tasks, extract insights from data, and enable your team to operate at a scale that wasn't previously possible.",
     chips: ['LLM Integration', 'OpenAI / Anthropic', 'Computer Vision', 'Fine-tuning', 'Predictive Models', 'Workflow Automation'],
     tag: 'LLMs · Computer Vision · OpenAI',
     accentColor: colors.pink,
@@ -91,9 +91,9 @@ export const services: Service[] = [
     slug: 'legacy-modernization',
     name: 'Legacy Application Modernization',
     shortDesc:
-      'Systematic migration of monolithic systems into containerised microservices — without disrupting live business operations.',
+      'Systematic migration of monolithic systems into containerised microservices without disrupting live business operations.',
     longDesc:
-      'We apply strangler fig migration patterns to systematically decouple and containerise your legacy systems — modernising your architecture without halting your live business operations. No big-bang rewrites.',
+      'We apply strangler fig migration patterns to systematically decouple and containerise your legacy systems, modernising your architecture without halting your live business operations. No big-bang rewrites.',
     chips: ['Strangler Fig', 'Microservices', 'Docker', 'Event-Driven', 'Zero Downtime', 'Incremental Migration'],
     tag: 'Microservices · Docker · Migration',
     accentColor: colors.purple,
@@ -127,7 +127,7 @@ export const services: Service[] = [
     shortDesc:
       'Terraform, Kubernetes, and automated CI/CD pipelines with fault tolerance across AWS, GCP, and Azure.',
     longDesc:
-      'Infrastructure as Code with Terraform, Kubernetes orchestration, and automated CI/CD pipelines — with fault tolerance, high availability, and cloud security baked in. We support AWS, GCP, and Azure.',
+      'Infrastructure as Code with Terraform, Kubernetes orchestration, and automated CI/CD pipelines, with fault tolerance, high availability, and cloud security baked in. We support AWS, GCP, and Azure.',
     chips: ['Terraform', 'Kubernetes', 'CI/CD', 'AWS', 'GCP', 'Azure', 'High Availability'],
     tag: 'AWS · GCP · Azure · K8s · Terraform',
     accentColor: colors.blue,
@@ -144,7 +144,7 @@ export const services: Service[] = [
     shortDesc:
       'High-fidelity interface design rooted in user psychology, complex journey mapping, and premium accessible aesthetics.',
     longDesc:
-      'We create design systems, wireframes, and interactive prototypes rooted in user psychology and interaction logic. Accessible, premium aesthetics — and complex user journey mapping that accounts for how people actually behave.',
+      'We create design systems, wireframes, and interactive prototypes rooted in user psychology and interaction logic. Accessible, premium aesthetics with complex user journey mapping that accounts for how people actually behave.',
     chips: ['Design Systems', 'Figma', 'Prototyping', 'User Research', 'Accessibility', 'Journey Mapping'],
     tag: 'Design Systems · Figma · Prototyping',
     accentColor: colors.green,
@@ -159,9 +159,9 @@ export const services: Service[] = [
     slug: 'api-integration',
     name: 'API Development & Systems Integration',
     shortDesc:
-      'RESTful and GraphQL APIs connecting fragmented software ecosystems — CRM, ERP, and third-party platforms — securely.',
+      'RESTful and GraphQL APIs connecting fragmented software ecosystems including CRM, ERP, and third-party platforms, securely.',
     longDesc:
-      'We design RESTful and GraphQL APIs and connect fragmented business software — CRM, ERP, third-party SaaS — into unified data pipelines. Secure integration architecture that gives every system in your stack a clear reason to exist.',
+      'We design RESTful and GraphQL APIs and connect fragmented business software including CRM, ERP, and third-party SaaS into unified data pipelines. Secure integration architecture that gives every system in your stack a clear reason to exist.',
     chips: ['REST APIs', 'GraphQL', 'CRM Integration', 'ERP Integration', 'Webhooks', 'Data Pipelines'],
     tag: 'REST · GraphQL · CRM · ERP',
     accentColor: colors.pink,
