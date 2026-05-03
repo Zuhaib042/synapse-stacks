@@ -165,7 +165,7 @@ export function ContactForm() {
           <textarea
             id="message"
             className={`${styles.textarea}${errors.message && touched.message ? ` ${styles.inputError}` : ''}`}
-            placeholder="Tell us about your project — what you're building, your current stack, timeline, and goals..."
+            placeholder="Tell us about your project. What you're building, your current stack, timeline, and goals..."
             value={form.message}
             onChange={(e) => set('message', e.target.value)}
             onBlur={() => blur('message')}

@@ -1,5 +1,6 @@
 .section {
   padding: var(--section-padding);
+  border-top: 1px solid var(--border);
 }
 
 .inner {
@@ -8,119 +9,109 @@
 }
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: 60px;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 64px;
+  align-items: end;
 }
 
 .eyebrow {
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-light);
   margin-bottom: 16px;
 }
 
 .title {
-  font-size: clamp(36px, 4vw, 58px);
-  font-weight: 800;
+  font-size: clamp(32px, 3.5vw, 48px);
+  font-weight: 400;
   letter-spacing: -0.03em;
   line-height: 1.08;
-  color: var(--ink);
+  color: var(--text);
   text-wrap: balance;
 }
 
-.sub {
-  font-size: 17px;
-  color: var(--ink-light);
-  line-height: 1.65;
-  max-width: 400px;
+.title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
 }
 
-/* Grid */
+.sub {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.75;
+}
+
+/* Border-grid layout */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
 }
 
-/* Card */
 .card {
-  background: var(--white);
-  border-radius: var(--radius-lg);
-  padding: 36px 32px;
-  box-shadow: var(--card-shadow);
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: default;
+  padding: 32px 28px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   position: relative;
   overflow: hidden;
+  transition: background 0.2s, opacity 0.55s ease, transform 0.55s ease;
+  opacity: 0;
+  transform: translateY(16px);
 }
 
-.card::before {
-  content: '';
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card:hover { background: rgba(255, 255, 255, 0.02); }
+
+.topBar {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 3px;
+  height: 1px;
+  background: var(--accent);
   opacity: 0;
   transition: opacity 0.2s;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--card-shadow-hover);
-}
-
-.card:hover::before {
-  opacity: 1;
-}
-
-/* Accent variants */
-.accentYellow::before { background: var(--yellow); }
-.accentGreen::before  { background: var(--green); }
-.accentPink::before   { background: var(--pink); }
-.accentBlue::before   { background: var(--blue); }
-.accentPurple::before { background: var(--purple); }
+.card:hover .topBar { opacity: 1; }
 
 .num {
+  font-size: 10px;
   font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--ink-light);
-  margin-bottom: 16px;
-  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  margin-bottom: 18px;
 }
 
 .name {
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
 }
 
 .desc {
-  font-size: 14px;
-  color: var(--ink-light);
-  line-height: 1.6;
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.65;
+  margin-bottom: 18px;
 }
 
 .tag {
-  display: inline-block;
-  margin-top: 20px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--ink-light);
-  padding: 5px 12px;
-  background: var(--cream);
-  border-radius: var(--radius-full);
+  font-size: 10px;
   font-family: var(--font-mono);
+  color: var(--text-dim);
 }
 
 .cta {
@@ -129,19 +120,13 @@
 }
 
 @media (max-width: 1024px) {
-  .header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  .header { grid-template-columns: 1fr; gap: 16px; }
 }
 
-@media (max-width: 640px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 768px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 500px) {
+  .grid { grid-template-columns: 1fr; }
 }

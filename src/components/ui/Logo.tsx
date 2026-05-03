@@ -16,7 +16,7 @@ export function LogoIcon({ size = 34 }: { size?: number }) {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      <rect width="34" height="34" rx="8" fill="#1C1914" />
+      <rect width="34" height="34" rx="7" fill="#7f04f9" />
       <path d="M17 9l8.5 4.25L17 17.5 8.5 13.25z" fill="white" />
       <path
         d="M8.5 17.5l8.5 4.25 8.5-4.25"

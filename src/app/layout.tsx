@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google'
+import { Plus_Jakarta_Sans, JetBrains_Mono, DM_Serif_Display } from 'next/font/google'
 import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 import { defaultMetadata, organizationSchema, SITE_URL_CONST } from '@/lib/seo'
@@ -21,6 +21,14 @@ const jetBrainsMono = JetBrains_Mono({
   display: 'swap',
 })
 
+const dmSerifDisplay = DM_Serif_Display({
+  subsets: ['latin'],
+  weight: ['400'],
+  style: ['normal', 'italic'],
+  variable: '--font-dm-serif',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
   ...defaultMetadata,
   title: {
@@ -37,7 +45,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${plusJakartaSans.variable} ${jetBrainsMono.variable}`}
+      className={`${plusJakartaSans.variable} ${jetBrainsMono.variable} ${dmSerifDisplay.variable}`}
     >
       <head>
         {/* JSON-LD: Organization structured data */}

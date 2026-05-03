@@ -5,14 +5,14 @@ export function Philosophy() {
   return (
     <section className={styles.section} aria-labelledby="philosophy-title">
       <div className={styles.inner}>
-        <FadeUp className={styles.header}>
-          <div>
-            <p className={styles.eyebrow}>Our Philosophy</p>
-            <h2 id="philosophy-title" className={styles.title}>
-              Software as a<br />
-              <em>living system</em>
-            </h2>
-          </div>
+        <FadeUp className={styles.left}>
+          <p className={styles.eyebrow}>// Our philosophy</p>
+          <h2 id="philosophy-title" className={styles.title}>
+            Software as a<br /><em>living system</em>
+          </h2>
+        </FadeUp>
+
+        <FadeUp className={styles.right} delay={80}>
           <div className={styles.body}>
             <p>
               We view software not as a collection of features, but as a living system. Every
@@ -27,24 +27,10 @@ export function Philosophy() {
           </div>
         </FadeUp>
 
-        {/* Quote card */}
-        <FadeUp className={styles.quote}>
-          {/* Horizontal rule decoration */}
-          <svg
-            style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.06 }}
-            viewBox="0 0 600 240"
-            preserveAspectRatio="xMidYMid slice"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            {[40, 80, 120, 160, 200].map((y) => (
-              <line key={y} x1="0" y1={y} x2="600" y2={y} stroke="white" strokeWidth="1" />
-            ))}
-          </svg>
-          <span className={styles.quoteMark} aria-hidden="true">&ldquo;</span>
+        <FadeUp className={styles.quote} delay={120}>
           <p className={styles.quoteText}>
-            Complexity is a liability. We engineer the simplest possible solution for the hardest
-            possible problems — and we hold that standard on every commit.
+            &ldquo;Complexity is a liability. We engineer the simplest possible solution for the
+            hardest possible problems, and we hold that <em>standard</em> on every commit.&rdquo;
           </p>
         </FadeUp>
       </div>

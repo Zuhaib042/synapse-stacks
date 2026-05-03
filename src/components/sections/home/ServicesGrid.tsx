@@ -1,52 +1,67 @@
-import Link from 'next/link'
+'use client'
+
+import { useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/Button'
-import { FadeUp } from '@/components/ui/FadeUp'
 import { services } from '@/lib/data/services'
 import styles from './ServicesGrid.module.css'
 
-// Map accent color to CSS class for border-top hover effect
-const accentClassMap: Record<string, string> = {
-  '#F2C84B': styles.accentYellow,
-  '#6EC97A': styles.accentGreen,
-  '#E85C8A': styles.accentPink,
-  '#3B5BDB': styles.accentBlue,
-  '#9B72CF': styles.accentPurple,
+function useCardObserver(ref: React.RefObject<HTMLDivElement | null>) {
+  useEffect(() => {
+    const container = ref.current
+    if (!container) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const idx = Array.from(container.children).indexOf(entry.target as HTMLElement)
+            setTimeout(() => entry.target.classList.add(styles.visible), idx * 55)
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.04, rootMargin: '0px 0px -40px 0px' }
+    )
+
+    container.querySelectorAll(`.${styles.card}`).forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [ref])
 }
 
 export function ServicesGrid() {
+  const gridRef = useRef<HTMLDivElement>(null)
+  useCardObserver(gridRef)
+
   return (
     <section className={styles.section} aria-labelledby="services-title">
       <div className={styles.inner}>
         <header className={styles.header}>
           <div>
-            <p className={styles.eyebrow}>Core Capabilities</p>
+            <p className={styles.eyebrow}>// Core capabilities</p>
             <h2 id="services-title" className={styles.title}>
-              Everything you need,
-              <br />
-              built to last
+              Nine disciplines.<br /><em>One partner.</em>
             </h2>
           </div>
           <p className={styles.sub}>
-            Nine deeply specialised engineering practices, delivered by a team that treats your
-            infrastructure as its own.
+            Every capability you need to build, scale, and own your digital future delivered by a
+            team that treats your infrastructure as its own.
           </p>
         </header>
 
-        <div className={styles.grid} role="list">
+        <div className={styles.grid} ref={gridRef} role="list">
           {services.map((service) => (
-            <FadeUp key={service.id} as="article" className={[styles.card, accentClassMap[service.accentColor]].join(' ')} role="listitem">
-              <div className={styles.num}>
-                {service.num} / {service.id}
-              </div>
+            <article key={service.id} className={styles.card} role="listitem">
+              <div className={styles.topBar} aria-hidden="true" />
+              <div className={styles.num}>{service.num} / {service.id}</div>
               <h3 className={styles.name}>{service.name}</h3>
               <p className={styles.desc}>{service.shortDesc}</p>
               <span className={styles.tag}>{service.tag}</span>
-            </FadeUp>
+            </article>
           ))}
         </div>
 
         <div className={styles.cta}>
-          <Button href="/services" variant="primary">
+          <Button href="/services" variant="ghost">
             Explore All Services →
           </Button>
         </div>

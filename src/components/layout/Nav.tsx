@@ -32,12 +32,13 @@ export function Nav() {
             </Link>
           </li>
         ))}
-        <li>
-          <Link href="/#consultation" className={styles.cta}>
-            Schedule a Consultation
-          </Link>
-        </li>
       </ul>
+
+      <div className={styles.actions}>
+        <Link href="/#consultation" className={styles.cta}>
+          Schedule a Consultation
+        </Link>
+      </div>
 
       {/* Mobile hamburger */}
       <button

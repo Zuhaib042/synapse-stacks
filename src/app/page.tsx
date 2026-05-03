@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import { Hero } from '@/components/sections/home/Hero'
+import { LogosBar } from '@/components/sections/home/LogosBar'
+import { Advantage } from '@/components/sections/home/Advantage'
 import { Metrics } from '@/components/sections/home/Metrics'
 import { ServicesGrid } from '@/components/sections/home/ServicesGrid'
-import { Advantage } from '@/components/sections/home/Advantage'
 import { Process } from '@/components/sections/home/Process'
 import { ContactSection } from '@/components/sections/home/ContactSection'
 import { TechTicker } from '@/components/ui/TechTicker'
@@ -37,12 +38,12 @@ const faqData = [
   {
     question: 'How does SynapseStacks approach software architecture?',
     answer:
-      'We treat software as a living system, not a feature list. Every engagement starts with systems thinking — mapping constraints, growth trajectory, and architectural requirements before writing code. We use microservices, edge computing, and elastic databases to build for scale from day one.',
+      'We treat software as a living system, not a feature list. Every engagement starts with systems thinking: mapping constraints, growth trajectory, and architectural requirements before writing code. We use microservices, edge computing, and elastic databases to build for scale from day one.',
   },
   {
     question: 'Does SynapseStacks work with enterprise clients?',
     answer:
-      'Yes. SynapseStacks has delivered 50+ enterprise projects across web, mobile, cloud, and AI disciplines. We operate with the rigor of an enterprise engineering organisation — strict CI/CD, TDD, peer reviews, and zero-downtime deployments.',
+      'Yes. SynapseStacks has delivered 50+ enterprise projects across web, mobile, cloud, and AI disciplines. We operate with the rigor of an enterprise engineering organisation: strict CI/CD, TDD, peer reviews, and zero-downtime deployments.',
   },
   {
     question: 'What cloud platforms does SynapseStacks support?',
@@ -61,10 +62,12 @@ export default function HomePage() {
       />
 
       <Hero />
+      {/* <LogosBar /> */}
+      <Advantage />
       <Metrics />
       <ServicesGrid />
-      <Advantage />
       <Process />
+      <TechTicker />
       <ContactSection />
     </>
   )
