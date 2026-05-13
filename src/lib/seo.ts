@@ -97,7 +97,7 @@ export function organizationSchema() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer support',
-      email: 'hello@synapsestacks.com',
+      email: 'contact@synapsestacks.com',
     },
     offers: {
       '@type': 'AggregateOffer',
