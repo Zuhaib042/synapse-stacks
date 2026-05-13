@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next'
+import { servicePages } from '@/lib/data/servicePages'
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://synapsestacks.com'
 
@@ -24,5 +25,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    {
+      url: `${SITE_URL}/work/chainblocks`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    ...servicePages.map((service) => ({
+      url: `${SITE_URL}/services/${service.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
   ]
 }

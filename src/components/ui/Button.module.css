@@ -21,9 +21,10 @@
 
 /* Yellow = same as primary (purple in dark theme) */
 .yellow {
-  background: var(--accent);
-  color: var(--text);
+  background: var(--neon);
+  color: var(--bg);
   padding: 11px 24px;
+  box-shadow: 0 0 24px rgba(109, 255, 3, 0.18);
 }
 .yellow:hover { opacity: 0.85; }
 

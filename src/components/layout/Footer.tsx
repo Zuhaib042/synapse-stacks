@@ -5,6 +5,7 @@ import styles from './Footer.module.css'
 const companyLinks = [
   { href: '/about', label: 'About' },
   { href: '/services', label: 'Services' },
+  { href: '/#faq', label: 'FAQ' },
 ]
 
 const legalLinks = [
@@ -70,13 +71,23 @@ export function Footer() {
             ))}
           </ul>
         </div>
+
+        <div>
+          <div className={styles.colTitle}>Contact</div>
+          <ul className={styles.links}>
+            <li>
+              <a href="mailto:contact@synapsestacks.com" className={styles.link}>
+                contact@synapsestacks.com
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
 
       <div className={styles.wordmark} aria-hidden="true">SynapseStacks</div>
 
       <div className={styles.bottom}>
         <span className={styles.copy}>© {new Date().getFullYear()} SynapseStacks. All rights reserved.</span>
-        <span className={styles.copy}>hello@synapsestacks.com</span>
       </div>
     </footer>
   )

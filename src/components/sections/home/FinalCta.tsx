@@ -14,7 +14,7 @@ export function FinalCta() {
         objectives.
       </p>
       <div className={styles.actions}>
-        <Button href="mailto:hello@synapsestacks.com" variant="yellow" external>
+        <Button href="mailto:contact@synapsestacks.com" variant="yellow" external>
           Schedule a Free Consultation
         </Button>
         <Button href="/services" variant="ghostLight">

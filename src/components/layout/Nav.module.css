@@ -24,6 +24,12 @@
   list-style: none;
 }
 
+.dropdown {
+  position: relative;
+  padding-bottom: 12px;
+  margin-bottom: -12px;
+}
+
 .link {
   font-size: 13px;
   font-weight: 400;
@@ -35,6 +41,79 @@
 .link:hover,
 .active {
   color: var(--text);
+}
+
+.dropdownToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.caret {
+  font-size: 10px;
+  color: inherit;
+  transform: rotate(0deg);
+  transition: transform 0.15s ease;
+}
+
+.caretOpen {
+  transform: rotate(90deg);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  transform: translateY(6px);
+  min-width: 180px;
+  padding: 8px;
+  border: 1px solid var(--border-mid);
+  border-radius: 8px;
+  background: rgba(13, 14, 26, 0.98);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.dropdown::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 14px;
+}
+
+.dropdownMenuOpen {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.dropdownMenuWide {
+  width: min(420px, calc(100vw - 40px));
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(5, auto);
+  align-items: start;
+  column-gap: 8px;
+}
+
+.dropdownLink {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--text-mid);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.dropdownLink:hover,
+.dropdownLink:focus-visible {
+  color: var(--neon);
+  background: rgba(109, 255, 3, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(109, 255, 3, 0.12);
 }
 
 .actions {
@@ -132,6 +211,34 @@
 .mobileLink:hover,
 .mobileLinkActive {
   color: var(--text);
+}
+
+.mobileGroup {
+  padding-top: 4px;
+}
+
+.mobileSubmenu {
+  margin-top: 4px;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobileSubLink {
+  display: block;
+  padding: 9px 16px;
+  font-size: 14px;
+  color: var(--text-dim);
+  border-radius: var(--radius-sm);
+  transition: color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mobileSubLink:hover,
+.mobileSubLink.mobileLinkActive {
+  color: var(--neon);
+  background: rgba(109, 255, 3, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(109, 255, 3, 0.12);
 }
 
 .mobileCta {
