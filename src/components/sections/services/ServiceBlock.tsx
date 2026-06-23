@@ -1,3 +1,6 @@
+import { existsSync } from 'node:fs'
+import { join } from 'node:path'
+import Image from 'next/image'
 import { FadeUp } from '@/components/ui/FadeUp'
 import { type Service } from '@/lib/data/services'
 import styles from './ServiceBlock.module.css'
@@ -47,7 +50,84 @@ const capData: Record<string, { left: { section: string; items: string[] }; righ
   },
 }
 
+const mobileAppScreenshots = [
+  {
+    src: '/work/mobile-app/today1.webp',
+    alt: 'Command Center',
+  },
+  {
+    src: '/work/mobile-app/c-drills.webp',
+    alt: 'Social Community',
+  },
+  {
+    src: '/work/mobile-app/alpha-chief.webp',
+    alt: 'AI Mentorship in hard times',
+  },
+]
+
+function publicAssetExists(src: string) {
+  return existsSync(join(process.cwd(), 'public', src.replace(/^\//, '')))
+}
+
+function ChainBlocksProjectVisual() {
+  return (
+    <div className={`${styles.visual} ${styles.projectVisual}`}>
+      <div className={styles.projectDesktopFrame}>
+        <Image
+          src="/work/chainblocks/cb-dash.webp"
+          alt="ChainBlocks dashboard preview showing cross-chain KPIs and analytics"
+          width={1600}
+          height={1000}
+          className={styles.projectDesktopImage}
+        />
+      </div>
+    </div>
+  )
+}
+
+function MobileAppProjectVisual() {
+  return (
+    <div className={`${styles.visual} ${styles.projectVisual}`}>
+      <div className={styles.projectMobileFrame}>
+        <div className={styles.phoneShelf}>
+          {mobileAppScreenshots.map((screenshot, index) => (
+            <div
+              key={screenshot.src}
+              className={`${styles.phoneMockup} ${index === 1 ? styles.phoneMockupPrimary : ''}`}
+            >
+              <div className={styles.phoneSpeaker} />
+              {publicAssetExists(screenshot.src) ? (
+                <Image
+                  src={screenshot.src}
+                  alt={screenshot.alt}
+                  width={430}
+                  height={932}
+                  className={styles.phoneImage}
+                />
+              ) : (
+                <div
+                  className={styles.phonePlaceholder}
+                  role="img"
+                  aria-label={`${screenshot.alt}. Add this image at public${screenshot.src}.`}
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function VisualMockup({ service }: { service: Service }) {
+  if (service.id === 'web') {
+    return <ChainBlocksProjectVisual />
+  }
+
+  if (service.id === 'mobile') {
+    return <MobileAppProjectVisual />
+  }
+
   if (service.id === 'ai') {
     return (
       <div className={styles.visual}>
