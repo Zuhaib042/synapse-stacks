@@ -50,15 +50,15 @@ const shippedProjects: ShippedProject[] = [
     tags: ['React Native', 'Supabase', 'Next.js', 'Mobile App'],
     screenshots: [
       {
-        src: '/work/mobile-app/today1.webp',
+        src: '/work/alphamale/today1.webp',
         alt: 'Command Center',
       },
       {
-        src: '/work/mobile-app/c-drills.webp',
+        src: '/work/alphamale/c-drills.webp',
         alt: 'Social Community',
       },
       {
-        src: '/work/mobile-app/alpha-chief.webp',
+        src: '/work/alphamale/alpha-chief.webp',
         alt: 'AI Mentorship in hard times',
       },
     ],

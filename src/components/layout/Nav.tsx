@@ -12,7 +12,10 @@ const navLinks = [
   { href: '/#faq', label: 'FAQ' },
 ]
 
-const workLinks = [{ href: '/work/chainblocks', label: 'ChainBlocks' }]
+const workLinks = [
+  { href: '/work/chainblocks', label: 'ChainBlocks' },
+  { href: '/work/alpha-male', label: 'Alpha Male' },
+]
 
 export function Nav() {
   const pathname = usePathname()
