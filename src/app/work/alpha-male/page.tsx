@@ -311,6 +311,14 @@ export default function AlphaMaleCaseStudyPage() {
               <Link href="/services" className={styles.secondaryLink}>
                 Explore Mobile Services
               </Link>
+              <div className={styles.legalLinks} aria-label="Alpha Male legal links">
+                <Link href="/work/alpha-male/privacy-policy" className={styles.legalLink}>
+                  Privacy Policy
+                </Link>
+                <Link href="/work/alpha-male/terms-of-service" className={styles.legalLink}>
+                  Terms of Service
+                </Link>
+              </div>
             </div>
           </FadeUp>
         </div>

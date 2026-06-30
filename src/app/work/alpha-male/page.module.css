@@ -396,6 +396,26 @@
   color: var(--text);
 }
 
+.legalLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  padding-top: 4px;
+}
+
+.legalLink {
+  font-size: 12px;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: color 0.15s ease;
+}
+
+.legalLink:hover {
+  color: var(--purple-light);
+}
+
 @media (max-width: 1024px) {
   .heroPhoneStage {
     min-height: 560px;
