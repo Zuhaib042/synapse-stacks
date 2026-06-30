@@ -247,13 +247,16 @@ export default function AlphaMaleCaseStudyPage() {
             {project.gallery.map((shot, index) => (
               <FadeUp key={shot.src} className={styles.shot} delay={index * 70}>
                 <div className={styles.shotFrame}>
-                  <Image
-                    src={shot.src}
-                    alt={shot.alt}
-                    width={430}
-                    height={932}
-                    className={styles.shotImage}
-                  />
+                  <div className={styles.shotPhoneMockup}>
+                    <div className={styles.shotPhoneSpeaker} />
+                    <Image
+                      src={shot.src}
+                      alt={shot.alt}
+                      width={430}
+                      height={932}
+                      className={styles.shotImage}
+                    />
+                  </div>
                 </div>
                 <div className={styles.shotBody}>
                   <div className={styles.shotLabel}>{shot.label}</div>
