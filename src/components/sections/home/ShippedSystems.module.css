@@ -76,10 +76,21 @@
     var(--bg2);
 }
 
+.cardImageLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .cardImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.35s ease;
+}
+
+.cardImageLink:hover .cardImage {
+  transform: scale(1.015);
 }
 
 .mobileFrame {
@@ -211,6 +222,18 @@
   font-size: 24px;
   font-weight: 500;
   color: var(--text);
+}
+
+.cardTitleLink {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.cardTitleLink:hover,
+.cardTitleLink:focus-visible {
+  color: var(--neon);
+  outline: none;
 }
 
 .liveChip {

@@ -1,6 +1,7 @@
 import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 import Image from 'next/image'
+import Link from 'next/link'
 import { FadeUp } from '@/components/ui/FadeUp'
 import { type Service } from '@/lib/data/services'
 import styles from './ServiceBlock.module.css'
@@ -71,7 +72,13 @@ function publicAssetExists(src: string) {
 
 function ChainBlocksProjectVisual() {
   return (
-    <div className={`${styles.visual} ${styles.projectVisual}`}>
+    <a
+      href="https://chainblocks-olive.vercel.app"
+      className={`${styles.visual} ${styles.projectVisual} ${styles.projectLinkVisual}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Open ChainBlocks live website"
+    >
       <div className={styles.projectDesktopFrame}>
         <Image
           src="/work/chainblocks/cb-dash.webp"
@@ -81,13 +88,19 @@ function ChainBlocksProjectVisual() {
           className={styles.projectDesktopImage}
         />
       </div>
-    </div>
+    </a>
   )
 }
 
 function AstraConciergeProjectVisual() {
   return (
-    <div className={`${styles.visual} ${styles.projectVisual}`}>
+    <a
+      href="https://astra-concierge.vercel.app/"
+      className={`${styles.visual} ${styles.projectVisual} ${styles.projectLinkVisual}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Open Astra Concierge live website"
+    >
       <div className={styles.projectDesktopFrame}>
         <Image
           src="/work/astra-concierge/astra-concierge.png"
@@ -97,13 +110,39 @@ function AstraConciergeProjectVisual() {
           className={styles.projectDesktopImage}
         />
       </div>
-    </div>
+    </a>
+  )
+}
+
+function AureliaRealEstateProjectVisual() {
+  return (
+    <a
+      href="https://aurelia-real-estate-pi.vercel.app/"
+      className={`${styles.visual} ${styles.projectVisual} ${styles.projectLinkVisual}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Open Aurelia Real Estate live website"
+    >
+      <div className={styles.projectDesktopFrame}>
+        <Image
+          src="/work/aurelia-real-estate/aurelia.png"
+          alt="Aurelia Real Estate motion website preview showing a luxury coastal residence landing page"
+          width={1722}
+          height={948}
+          className={styles.projectDesktopImage}
+        />
+      </div>
+    </a>
   )
 }
 
 function MobileAppProjectVisual() {
   return (
-    <div className={`${styles.visual} ${styles.projectVisual}`}>
+    <Link
+      href="/work/alpha-male"
+      className={`${styles.visual} ${styles.projectVisual} ${styles.projectLinkVisual}`}
+      aria-label="Open Alpha Male work page"
+    >
       <div className={styles.projectMobileFrame}>
         <div className={styles.phoneShelf}>
           {mobileAppScreenshots.map((screenshot, index) => (
@@ -131,7 +170,7 @@ function MobileAppProjectVisual() {
           ))}
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
@@ -146,6 +185,10 @@ function VisualMockup({ service }: { service: Service }) {
 
   if (service.id === 'api') {
     return <AstraConciergeProjectVisual />
+  }
+
+  if (service.id === 'ux') {
+    return <AureliaRealEstateProjectVisual />
   }
 
   if (service.id === 'ai') {

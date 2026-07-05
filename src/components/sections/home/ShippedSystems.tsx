@@ -1,6 +1,7 @@
 import { existsSync } from 'node:fs'
 import { join } from 'node:path'
 import Image from 'next/image'
+import Link from 'next/link'
 import { FadeUp } from '@/components/ui/FadeUp'
 import styles from './ShippedSystems.module.css'
 
@@ -12,6 +13,7 @@ type ShippedProject =
       imageSrc: string
       imageAlt: string
       liveUrl: string
+      workHref?: string
       summary: string
       tags: string[]
     }
@@ -20,6 +22,7 @@ type ShippedProject =
       label: string
       layout: 'mobile'
       statusLabel: string
+      workHref?: string
       summary: string
       tags: string[]
       screenshots: {
@@ -36,6 +39,7 @@ const shippedProjects: ShippedProject[] = [
     imageSrc: '/work/chainblocks/cb-dash.webp',
     imageAlt: 'ChainBlocks dashboard preview showing cross-chain KPIs and analytics',
     liveUrl: 'https://chainblocks-olive.vercel.app',
+    workHref: '/work/chainblocks',
     summary:
       'A multi-chain analytics dashboard with protected API access, cached data delivery, and product structure built for future growth.',
     tags: ['Analytics Dashboard', 'Caching', 'API Architecture'],
@@ -45,6 +49,7 @@ const shippedProjects: ShippedProject[] = [
     label: 'Mobile App',
     layout: 'mobile',
     statusLabel: 'Mobile Screens',
+    workHref: '/work/alpha-male',
     summary:
       'A mobile-first discipline and accountability app for men who want to take back control from destructive digital habits like porn, compulsive scrolling, trigger-seeking, wasted nights, relapse cycles, and the loss of time, money, energy, confidence, and focus.',
     tags: ['React Native', 'Supabase', 'Next.js', 'Mobile App'],
@@ -70,9 +75,22 @@ const shippedProjects: ShippedProject[] = [
     imageSrc: '/work/astra-concierge/astra-concierge.png',
     imageAlt: 'Astra Concierge interface preview showing concierge workflow and service orchestration',
     liveUrl: 'https://astra-concierge.vercel.app/',
+    workHref: '/work/astra-concierge',
     summary:
       'A concierge workflow system that brings service requests, operational context, and customer-facing coordination into one polished product surface.',
     tags: ['Concierge Platform', 'Workflow System', 'Systems Integration'],
+  },
+  {
+    name: 'Aurelia Real Estate',
+    label: 'Motion Website',
+    layout: 'desktop',
+    imageSrc: '/work/aurelia-real-estate/aurelia.png',
+    imageAlt:
+      'Aurelia Real Estate motion website preview showing a luxury coastal residence landing page',
+    liveUrl: 'https://aurelia-real-estate-pi.vercel.app/',
+    summary:
+      'A cinematic real-estate website concept with luxury editorial direction, motion-led presentation, and a high-end property experience built to feel premium from the first frame.',
+    tags: ['Motion Website', 'Real Estate', 'UI/UX Design'],
   },
 ]
 
@@ -135,20 +153,36 @@ export function ShippedSystems() {
                       ))}
                     </div>
                   ) : (
-                    <Image
-                      src={project.imageSrc}
-                      alt={project.imageAlt}
-                      width={1600}
-                      height={1000}
-                      className={styles.cardImage}
-                    />
+                    <a
+                      href={project.liveUrl}
+                      className={styles.cardImageLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Open ${project.name} live website`}
+                    >
+                      <Image
+                        src={project.imageSrc}
+                        alt={project.imageAlt}
+                        width={1600}
+                        height={1000}
+                        className={styles.cardImage}
+                      />
+                    </a>
                   )}
                 </div>
                 <div className={styles.cardBody}>
                   <div className={styles.cardTop}>
                     <div>
                       <div className={styles.cardLabel}>{project.label}</div>
-                      <h3 className={styles.cardTitle}>{project.name}</h3>
+                      <h3 className={styles.cardTitle}>
+                        {project.workHref ? (
+                          <Link href={project.workHref} className={styles.cardTitleLink}>
+                            {project.name}
+                          </Link>
+                        ) : (
+                          project.name
+                        )}
+                      </h3>
                     </div>
                     {project.layout === 'desktop' ? (
                       <a
