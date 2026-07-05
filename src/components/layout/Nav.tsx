@@ -14,6 +14,7 @@ const navLinks = [
 
 const workLinks = [
   { href: '/work/chainblocks', label: 'ChainBlocks' },
+  { href: '/work/astra-concierge', label: 'Astra Concierge' },
   { href: '/work/alpha-male', label: 'Alpha Male' },
 ]
 
