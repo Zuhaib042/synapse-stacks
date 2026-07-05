@@ -63,6 +63,17 @@ const shippedProjects: ShippedProject[] = [
       },
     ],
   },
+  {
+    name: 'Astra Concierge',
+    label: 'Delivered Work',
+    layout: 'desktop',
+    imageSrc: '/work/astra-concierge/astra-concierge.png',
+    imageAlt: 'Astra Concierge interface preview showing concierge workflow and service orchestration',
+    liveUrl: 'https://astra-concierge.vercel.app/',
+    summary:
+      'A concierge workflow system that brings service requests, operational context, and customer-facing coordination into one polished product surface.',
+    tags: ['Concierge Platform', 'Workflow System', 'Systems Integration'],
+  },
 ]
 
 function publicAssetExists(src: string) {

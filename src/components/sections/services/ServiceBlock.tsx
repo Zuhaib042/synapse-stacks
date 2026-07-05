@@ -85,6 +85,22 @@ function ChainBlocksProjectVisual() {
   )
 }
 
+function AstraConciergeProjectVisual() {
+  return (
+    <div className={`${styles.visual} ${styles.projectVisual}`}>
+      <div className={styles.projectDesktopFrame}>
+        <Image
+          src="/work/astra-concierge/astra-concierge.png"
+          alt="Astra Concierge interface preview showing concierge workflow and service orchestration"
+          width={2142}
+          height={1520}
+          className={styles.projectDesktopImage}
+        />
+      </div>
+    </div>
+  )
+}
+
 function MobileAppProjectVisual() {
   return (
     <div className={`${styles.visual} ${styles.projectVisual}`}>
@@ -126,6 +142,10 @@ function VisualMockup({ service }: { service: Service }) {
 
   if (service.id === 'mobile') {
     return <MobileAppProjectVisual />
+  }
+
+  if (service.id === 'api') {
+    return <AstraConciergeProjectVisual />
   }
 
   if (service.id === 'ai') {
