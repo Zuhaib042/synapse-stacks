@@ -55,6 +55,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.4,
     },
+    {
+      url: `${SITE_URL}/work/alpha-male/support`,
+      lastModified: now,
+      changeFrequency: 'monthly',
+      priority: 0.4,
+    },
     ...servicePages.map((service) => ({
       url: `${SITE_URL}/services/${service.slug}`,
       lastModified: now,
