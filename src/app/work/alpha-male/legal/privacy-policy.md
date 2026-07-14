@@ -1,6 +1,6 @@
 # Alpha Male Privacy Policy
 
-Effective date: June 30, 2026
+Effective date: July 14, 2026
 
 Alpha Male is operated by Hafiz Muhammad Zuhaib, using Synapse Stacks as the product and support brand ("Synapse Stacks," "we," "us," or "our"). This Privacy Policy explains how we collect, use, disclose, retain, and protect information when you use the Alpha Male mobile application, websites, backend services, support channels, and related features (collectively, the "Service").
 
@@ -10,7 +10,7 @@ Alpha Male is a private self-improvement and recovery app designed to help users
 
 ## 1. Summary
 
-- We collect account information, profile settings, recovery progress, check-ins, goals, journals/accountability notes, relapse and urge logs, Shield Mode settings, notification preferences, social posts/replies/reactions, app diagnostics, and support messages.
+- We collect account information, profile settings, recovery progress, check-ins, goals, journals/accountability notes, relapse and urge logs, Shield Mode settings, notification preferences, subscription and purchase status, social posts/replies/reactions, moderation records, app diagnostics, and support messages.
 - Some information may reveal sensitive personal details, including sexual behavior, explicit-content use, urges, emotional state, stress, sleep, spending related to destructive content, and recovery goals.
 - We use this information to run the app, calculate streaks and progress, provide reminders, power recovery tools, enable optional social/accountability features, improve reliability, provide support, and protect the Service.
 - We do not sell your personal information.
@@ -98,8 +98,13 @@ If you use Alpha Tribe or other social/accountability features, we may collect a
 - Whether you post with your profile identity or anonymously.
 - Display name and avatar snapshot for profile-mode posts.
 - Links between posts and goals, journals, urge protocols, or relapse logs where applicable.
+- Report reasons, reported content excerpts, reporter identifiers, reported-account identifiers, moderation status, moderation actions, and moderation timestamps.
+- Blocked-user relationships.
+- Content-filtering, abuse-prevention, rate-limit, safety, and policy-enforcement signals.
 
 Posts and replies may be visible to other authenticated users depending on the feature. Anonymous posting hides your profile display name and avatar from other users, but we still store account-level records so we can operate, secure, moderate, and enforce the Service.
+
+If you report another user's post or reply, the reported content is hidden from you and submitted for moderation. If you block another user, we store the blocked-user relationship so the affected accounts cannot view or interact with one another through Alpha Tribe features.
 
 ### 3.7 Alpha Chief AI mentor data
 
@@ -139,11 +144,26 @@ If you enable reminders, we may process:
 
 At this stage, the core local reminders are Daily Pledge and Daily check-in. Some notification records may also support progress updates or future features.
 
-### 3.10 Photos and media
+### 3.10 Subscription and purchase data
+
+Alpha Male uses Apple in-app purchase infrastructure for iOS subscriptions and Superwall to present paywalls and synchronize entitlement status. When you view paywalls, start trials, purchase, restore purchases, or use paid features, we and our service providers may process:
+
+- Superwall anonymous ID, alias ID, and app user ID.
+- Supabase user ID sent to Superwall to connect your app account with entitlement status.
+- Product identifiers, subscription identifiers, and offer identifiers.
+- Paywall impressions, placement information, campaign/experiment metadata, and paywall interactions.
+- Purchase, trial, restore, renewal, cancellation, expiration, billing-retry, and entitlement status.
+- Purchase timestamps, expiration timestamps, cancellation timestamps, and related subscription lifecycle timestamps.
+- App version, SDK version, device/platform information, locale, time zone, and diagnostic context.
+- Apple transaction identifiers, original transaction identifiers, receipt or signed transaction data where applicable, and webhook/event identifiers used to validate or synchronize subscription status.
+
+Apple processes App Store payment details. We do not receive your full payment card number.
+
+### 3.11 Photos and media
 
 If you choose a profile photo, we request photo-library access from your device. We use the selected image to create or update your profile avatar. We do not scan your photo library.
 
-### 3.11 Support and feedback
+### 3.12 Support and feedback
 
 If you contact us at contact@synapsestacks.com or through an in-app mail flow, we may receive:
 
@@ -152,7 +172,7 @@ If you contact us at contact@synapsestacks.com or through an in-app mail flow, w
 - Screenshots or attachments you choose to include.
 - App version, device/platform, and diagnostic context if included by the app or by you.
 
-### 3.12 Technical, analytics, and security data
+### 3.13 Technical, analytics, and security data
 
 We may collect:
 
@@ -171,6 +191,7 @@ We use information to:
 - Create, authenticate, and maintain your account.
 - Provide daily check-ins, streaks, progress analytics, goals, journals, urge protocols, relapse recovery tools, reminders, Shield Mode, Alpha Chief, and Alpha Tribe.
 - Calculate discipline scores, risk bands, reclaimed time, cash saved, and progress summaries.
+- Present paywalls, process Apple subscription status, restore purchases, synchronize entitlements, and provide paid features.
 - Open local device actions that you request, such as SMS to a trusted friend.
 - Send or schedule reminders and account/service messages.
 - Provide support and respond to feedback.
@@ -192,10 +213,12 @@ We use service providers to operate the Service. These providers may process inf
 - Supabase for authentication, database, storage, and backend infrastructure.
 - Vercel for hosting backend/web services and legal/support pages.
 - Vercel AI Gateway and AI model providers, including OpenAI, Alibaba/Qwen, Google, or other configured providers, to generate Alpha Chief responses.
-- Apple services, including Sign in with Apple, TestFlight/App Store, in-app purchase infrastructure if enabled, FamilyControls/ManagedSettings, notifications, and other platform services.
+- Apple services, including Sign in with Apple, App Store, Apple in-app purchase infrastructure, FamilyControls/ManagedSettings, notifications, and other platform services.
+- Superwall for paywall presentation, subscription analytics, entitlement synchronization, product identifiers, purchase and restore events, trial and entitlement status, and related device/platform data.
 - Cloudflare Family DNS for Android Shield Mode DNS filtering when Android website blocking is enabled.
 - Email providers and mail clients used to send, receive, or process support messages.
-- Payment/subscription infrastructure if paid subscriptions are enabled in the future. We do not collect payment card numbers; App Store payment processing is handled by Apple.
+
+Apple processes App Store payment details. We do not collect payment card numbers.
 
 These providers may process data according to their own terms and privacy practices. We choose providers that are commonly used for app infrastructure and require them to protect information in ways appropriate to their role.
 
@@ -240,7 +263,7 @@ Typical retention practices:
 - Social posts/replies may remain while the related community feature exists, unless deleted, hidden, anonymized, or removed through moderation or account deletion.
 - Support emails may be retained while needed to respond to you and maintain support/security records.
 - Backups and logs may retain copies for a limited period after deletion from active systems.
-- Purchase, fraud, tax, or legal records may be retained as required by law or platform rules if paid features are enabled.
+- Purchase, restore, entitlement, fraud, tax, accounting, or legal records may be retained as required by law, platform rules, or legitimate business needs.
 
 ## 8. Account deletion and returning users
 
@@ -263,6 +286,8 @@ Depending on the feature, you can:
 - Turn Shield Mode on/off and revoke platform permissions.
 - Delete or archive certain goals, notes, or accountability records where the app provides controls.
 - Choose whether to post in Alpha Tribe with profile identity or anonymous identity.
+- Report posts or replies, block users, and contact us about moderation or safety concerns.
+- Manage or cancel Apple subscriptions in your Apple Account subscription settings, and use Restore Purchases in the app to restore valid entitlements.
 - Contact us to request access, correction, deletion, or assistance.
 
 Some requests may require identity verification.
